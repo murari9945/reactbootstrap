@@ -2,8 +2,10 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-const cartElements = [
-  {
+
+function Example() {
+  const [show, setShow] = useState(false);
+  const [cartElements, setCartElements] = useState([{
     title: 'Colors',
     price: 100,
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
@@ -20,12 +22,7 @@ const cartElements = [
     price: 70,
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
     quantity: 1,
-  },
-];
-
-function Example() {
-  const [show, setShow] = useState(false);
-  const [cartElements, setCartElements] = useState([]); 
+  }]); 
 
 
   const handleClose = () => setShow(false);
