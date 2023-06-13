@@ -1,39 +1,17 @@
-import { useState } from 'react';
+import React, { useContext,useState } from 'react';
+import { CartContext } from './CartContext';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-
 function Example() {
-  const [show, setShow] = useState(false);
-  const [cartElements, setCartElements] = useState([{
-    title: 'Colors',
-    price: 100,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    quantity: 2,
-  },
-  {
-    title: 'Black and white Colors',
-    price: 50,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    quantity: 3,
-  },
-  {
-    title: 'Yellow and Black Colors',
-    price: 70,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    quantity: 1,
-  }]); 
-
+    const [show, setShow] = useState(false);
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleRemoveFromCart = (index) => {
-    // Remove the item from the cartElements array
-    const updatedCartElements = [...cartElements];
-    updatedCartElements.splice(index, 1);
-    // Update the cartElements state
-    setCartElements(updatedCartElements);
+    removeFromCart(index);
   };
 
   return (
@@ -47,14 +25,14 @@ function Example() {
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {cartElements.length > 0 ? (
+          {cartItems.length > 0 ? (
             <ul>
-              {cartElements.map((element, index) => (
+              {cartItems.map((item, index) => (
                 <li key={index}>
-                  <img src={element.imageUrl} alt={element.title} />
-                  <h5>{element.title}</h5>
-                  <p>Price: ${element.price}</p>
-                  <p>Quantity: {element.quantity}</p>
+                  <img src={item.imageUrl} alt={item.title} />
+                  <h5>{item.title}</h5>
+                  <p>Price: ${item.price}</p>
+                  <p>Quantity: {item.quantity}</p>
                   <button onClick={() => handleRemoveFromCart(index)}>Remove</button>
                 </li>
               ))}

@@ -1,5 +1,7 @@
+import React,{ useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { CartContext } from './CartContext';
 const productsArr = [
   {
     title: 'Colors',
@@ -23,16 +25,23 @@ const productsArr = [
   },
 ];
 const Product=()=> {
+  const { addToCart } = useContext(CartContext);
+  console.log(addToCart);
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    console.log('added',product);
+  };
+  
   return (<div className="row row-cols-1 row-cols-md-2 g-4">
     {productsArr.map((product, index) => (
     <Card key={index} style={{ width: '18rem' }}>
       <Card.Img variant="top" src={product.imageUrl} />
       <Card.Body>
-        <Card.Title>{product.Title}</Card.Title>
+        <Card.Title>{product.title}</Card.Title>
         <Card.Text>
           Price:{product.price}
         </Card.Text>
-        <Button variant="primary">ADD TO CART</Button>
+        <Button variant="primary"onClick={() => handleAddToCart(product) }>ADD TO CART</Button>
       </Card.Body>
     </Card>
   ))}
