@@ -15,6 +15,8 @@ function ColorSchemesExample() {
             <Nav.Link as={Link} to="/products">Store</Nav.Link>
             <Nav.Link  as ={Link} to="/about">About</Nav.Link>
             <Nav.Link  as={Link}   to="/contact">contact</Nav.Link>
+            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+
            
           </Nav>
           <CartIcon/>

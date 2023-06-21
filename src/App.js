@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import About from './Components/About';
 import Store from './Components/Store';
 import Contact from './Components/Contact';
+import Login from './Components/Login';
 import {
   createBrowserRouter,
   // createRoutesFromElements,
@@ -15,6 +16,8 @@ import {
 } from 'react-router-dom';
 import RootLayout from './Components/Root';
 import ProductDetails from './Components/ProductDetails';
+import { useContext } from 'react';
+import { AuthContext } from './Components/AuthContext';
 
 const productsArr = [
   { id:'1',
@@ -42,16 +45,19 @@ const productsArr = [
   },
 ];
 function App() {
+  const authContext=useContext(AuthContext);
   return (
     <CartProvider>
       <Router>
         <RootLayout />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Store />} />
+          {authContext.isLoggedIn && (<Route path="/products" element={<Store />} />)}
+          
           <Route path="/products/:product_id" element={<ProductDetails productsArr={productsArr}/>}/>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </Router>
     </CartProvider>
