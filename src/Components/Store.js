@@ -1,4 +1,4 @@
-import Product from "./Product";
+import Product from './Product';
 const Store=()=>{
     return(
         <div className="row row-cols-1 row-cols-md-2 g-4">

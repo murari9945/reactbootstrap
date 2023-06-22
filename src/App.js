@@ -52,12 +52,12 @@ function App() {
         <RootLayout />
         <Routes>
           <Route path="/" element={<Home />} />
-          {authContext.isLoggedIn && (<Route path="/products" element={<Store />} />)}
+          <Route path="/product" element={<Store />} />
           
           <Route path="/products/:product_id" element={<ProductDetails productsArr={productsArr}/>}/>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact/>}/>
-          <Route path="/login" element={<Login/>}/>
+          {!authContext.isLoggedIn && (<Route path="/login" element={<Login/>}/>)}
         </Routes>
       </Router>
     </CartProvider>
