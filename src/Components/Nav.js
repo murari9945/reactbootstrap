@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartIcon from './CartIcon';
 import { Link } from 'react-router-dom';
+import { CartProvider } from './CartContext';
 
 function ColorSchemesExample() {
   return (
@@ -19,7 +20,10 @@ function ColorSchemesExample() {
 
            
           </Nav>
+          <CartProvider>
           <CartIcon/>
+          </CartProvider>
+          
         </Container>
       </Navbar>
      

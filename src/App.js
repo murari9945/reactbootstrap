@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import { CartProvider } from './Components/CartContext';
-import {BrowserRouter as Router,Route,Routes } from 'react-router-dom';
+import {BrowserRouter as Router,Route,Routes,Navigate } from 'react-router-dom';
 import Home from './Components/Home';
 import About from './Components/About';
 import Store from './Components/Store';
@@ -52,12 +52,12 @@ function App() {
         <RootLayout />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product" element={<Store />} />
-          
+        {authContext.isLoggedIn && (<Route path="/product" element={<Store />} />)}
+        
           <Route path="/products/:product_id" element={<ProductDetails productsArr={productsArr}/>}/>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact/>}/>
-          {!authContext.isLoggedIn && (<Route path="/login" element={<Login/>}/>)}
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </Router>
     </CartProvider>

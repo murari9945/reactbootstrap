@@ -10,8 +10,8 @@ function Example() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleRemoveFromCart = (index) => {
-    removeFromCart(index);
+  const handleRemoveFromCart = (item) => {
+    removeFromCart(item.id);
   };
 
   return (
@@ -31,9 +31,9 @@ function Example() {
                 <li key={index}>
                   <img src={item.imageUrl} alt={item.title} />
                   <h5>{item.title}</h5>
-                  <p>Price: ${item.price}</p>
+                  <p>Price: RS{item.price}</p>
                   <p>Quantity: {item.quantity}</p>
-                  <button onClick={() => handleRemoveFromCart(index)}>Remove</button>
+                  <button onClick={() => handleRemoveFromCart(item)}>Remove</button>
                 </li>
               ))}
             </ul>
@@ -47,3 +47,38 @@ function Example() {
 }
 
 export default Example;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

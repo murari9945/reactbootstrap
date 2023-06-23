@@ -8,9 +8,10 @@ import {Container} from 'react-bootstrap';
 function Home() {
     const navigate = useNavigate();
 
-    function navigateHandler() {
-      navigate('/products');
-    }
+   // function navigateHandler() {
+   //   navigate('/products');
+  
+  //}
     const events = [
         {
           date: 'June 20, 2023',
